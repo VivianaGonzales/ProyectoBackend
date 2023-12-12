@@ -34,6 +34,6 @@ const editarTurno = async (mascota,dueño,telefono,edad,raza,servicio,turno,desc
 }
 
 const borrarTurno = async (id) => {
-    const { data } = await axios.delete ('https://proyectobackend-production-ad9c.up.railway.app/api/borrar/' +id)
+    const { data } = await axios.delete('https://proyectobackend-production-ad9c.up.railway.app/api/borrar/' +id)
     return data 
 }
