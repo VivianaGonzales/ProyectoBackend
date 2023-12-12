@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const listado = async () => {
-    const { data } = axios.get ('https://proyectobackend-production-ad9c.up.railway.app/api/info')
-    return { data }
+    const { data } = axios.get('https://proyectobackend-production-ad9c.up.railway.app/api/info')
+    return data 
 }
 
 const nuevoTurno = async (mascota,dueño,telefono,edad,raza,servicio,turno,descuento) => {
@@ -16,7 +16,7 @@ const nuevoTurno = async (mascota,dueño,telefono,edad,raza,servicio,turno,descu
         turno,
         descuento
     }) 
-    return {data}
+    return data
 }
 
 const editarTurno = async (mascota,dueño,telefono,edad,raza,servicio,turno,descuento,id) => {
@@ -30,10 +30,10 @@ const editarTurno = async (mascota,dueño,telefono,edad,raza,servicio,turno,desc
         turno,
         descuento
     }) 
-    return {data}
+    return data
 }
 
 const borrarTurno = async (id) => {
-    const { data } = axios.delete ('https://proyectobackend-production-ad9c.up.railway.app/api/borrar/' +id)
-    return { data }
+    const { data } = await axios.delete ('https://proyectobackend-production-ad9c.up.railway.app/api/borrar/' +id)
+    return data 
 }
