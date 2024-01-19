@@ -1,0 +1,223 @@
+openapi: 3.0.1
+info: 
+    title: Crud de turnos para baños
+    description: Este es el crud para ver todos mis turnos
+    version: 1.0.0
+servers: 
+  - url: /api
+  - url: /index
+paths: 
+  /info: 
+    get:
+      tags:
+        - "api crud"
+      description: Esta api me muestra el listado de los turnos para baño
+      responses:
+        200:
+          description: OK
+          content:
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/getFullList'
+  /id/{id}:
+    get:
+      tags:
+        - "api crud"
+      description: Esta api me muestra un turno de mi base de datos
+      parameters:
+          - $ref: '#/components/parameters/id'
+      responses:
+         200:
+          description: OK
+          content:
+            application/json: 
+             schema: 
+               $ref: '#/components/schemas/getTurno'
+  /crear:
+    post:
+      tags:
+        - "api crud"
+      description: Esta api crea un turno en mi base de datos
+      requestBody:
+        content: 
+          application/json: 
+             schema: 
+               $ref: '#/components/schemas/postTurno'
+      responses:
+        201:
+          description: Create
+          content:
+            application/json: 
+             schema: 
+               $ref: '#/components/schemas/getTurno'
+
+  /editar/{id}:
+    put:  
+      tags:
+        - "api crud"
+      description: Esta api edita un turno de mi base de datos
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:  
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putTurno'
+      responses:
+        201:
+          description: Edit
+          content:
+            application/json: 
+             schema: 
+               $ref: '#/components/schemas/getTurno'  
+               
+  /borrar/{id}:
+    delete:   
+      tags:
+        - "api crud"
+      description: Esta api borra un turno de mi base de datos
+      parameters:
+        - $ref: '#/components/parameters/id'
+      # requestBody:  
+      #   content: 
+      #     application/json:
+      #       schema:
+      #         $ref: '#/components/schemas/deleteTurno'
+      responses:
+        201:
+          description: Edit
+          content:
+            application/json: 
+             schema: 
+               $ref: '#/components/schemas/getTurno'                                  
+
+components:
+  schemas:
+    getFullList:
+      properties:
+        turnos: 
+          items: 
+            $ref: '#/components/schemas/getTurno' 
+
+    postTurno:
+      properties:
+        mascota: 
+          type: string
+          example: alfredo
+        dueño: 
+          type: string
+          example: sofia
+        telefono: 
+          type: number
+          example: 1139041360
+        edad: 
+          type: string 
+          example: 10 años
+        raza: 
+          type: string
+          example: mestizo
+        servicio: 
+          type: string 
+          example: baño
+        turno: 
+          type: string 
+          example: martes 12, 19 hs
+        descuento: 
+          type: string 
+          example: 0 
+
+    putTurno:
+      properties:
+        mascota: 
+          type: string
+          example: alfredo
+        dueño: 
+          type: string
+          example: sofia
+        telefono: 
+          type: number
+          example: 1139041360
+        edad: 
+          type: string 
+          example: 10 años
+        raza: 
+          type: string
+          example: mestizo
+        servicio: 
+          type: string 
+          example: baño
+        turno: 
+          type: string 
+          example: martes 12, 19 hs
+        descuento: 
+          type: string 
+          example: 0 
+
+    deleteTurno:
+      properties:
+        mascota: 
+          type: string
+          example: alfredo
+        dueño: 
+          type: string
+          example: sofia
+        telefono: 
+          type: number
+          example: 1139041360
+        edad: 
+          type: string 
+          example: 10 años
+        raza: 
+          type: string
+          example: mestizo
+        servicio: 
+          type: string 
+          example: baño
+        turno: 
+          type: string 
+          example: martes 12, 19 hs
+        descuento: 
+          type: string 
+          example: 0
+
+    getTurno: 
+      properties:
+        _id:
+          type: string
+          example: 65774ff984f8883ae1cde135
+        mascota: 
+          type: string
+          example: alfredo
+        dueño: 
+          type: string
+          example: sofia
+        telefono: 
+          type: number
+          example: 1139041360
+        edad: 
+          type: string 
+          example: 10 años
+        raza: 
+          type: string
+          example: mestizo
+        servicio: 
+          type: string 
+          example: baño
+        turno: 
+          type: string 
+          example: martes 12, 19 hs
+        descuento: 
+          type: string 
+          example: si
+        __v:
+          type: number
+          example: 0
+  parameters:
+    id:
+      name: id
+      in: path
+      description: El id del turno en la base de datos
+      required: true
+      schema:
+        type: string
+

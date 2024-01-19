@@ -7,7 +7,6 @@ const {validarChecks} = require ('../middleware/validarChecks')
 const {validarDescuento} = require ('../middleware/validarDescuento')
 const descuento = require('../middleware/descuento')
 
-
 router.get('/info',apiController.apiGet)
 router.get('/one/:telefono',apiController.apiGetOne)
 router.get('/buscar',apiController.apiGetList)
