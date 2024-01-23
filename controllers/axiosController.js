@@ -1,13 +1,15 @@
-const axiosController = {
-    async axiosGet(req, res) {
+const axios = require('axios')
+
+const axiosController =  {
+    async axiosget(req, res) {
         try {
-            const { data } = await axios.Get('https://proyectobackend-production-ad9c.up.railway.app/api/info')
-            return data
+            const {data} = await axios.get('https://fakestoreapi.com/products')
+            res.status(200).json(data)
         } catch (error) {
-            
+            res.status(502).json(error)
         }
     }
-
 }
+
 
 module.exports = axiosController
